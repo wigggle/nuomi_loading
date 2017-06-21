@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>loading</title>
+    <style>
+        .loading{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+        .round{
+            width: 180px;
+            height: 180px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            border-radius: 90px;
+            border: 2px solid deeppink;
+            border-top-color: transparent;
+
+            /*实现圆圈转动的动画效果*/
+            animation: ring 1.2s linear infinite;
+        }
+
+        /*画出背景圆：不设置高度和宽度 用border画 其中左四分之一和下四分之一浅色*/
+        .background{
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 40px;
+            top: 40px;
+            border: 60px solid deeppink;
+            border-left-color: lightpink;
+            border-bottom-color: lightpink;
+            border-radius: 60px;
+        }
+        /*画出左边的圆形深色 并让它旋转*/
+        .left{
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 40px;
+            top: 40px;
+            border: 60px solid deeppink;
+            border-radius: 60px;
+            border-left-color: transparent;
+            border-bottom-color: transparent;
+
+            animation: left 1.2s linear infinite;
+        }
+        /*设置右边的半圆 浅色 向另一个方向旋转*/
+        .right{
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 40px;
+            top: 40px;
+            border: 60px solid lightpink;
+            border-radius: 60px;
+            border-left-color: transparent;
+            border-bottom-color: transparent;
+
+            animation: right 1.2s linear infinite;
+        }
+        @keyframes ring {
+            0%{transform: rotate(0deg);}
+            100%{transform: rotate(360deg);}
+        }
+        @keyframes left {
+            0% {transform: rotate(0deg);}
+            25% {transform: rotate(180deg);}
+            50% {
+                transform: rotate(180deg);
+                z-index: 3;
+            }
+            75% {
+                transform: rotate(360deg);
+                z-index: 3;
+            }
+            100% {transform: rotate(360deg);}
+        }
+        @keyframes right {
+            0% {
+                transform: rotate(0deg);
+                z-index: 3;
+            }
+            25% {
+                transform: rotate(0deg);
+                z-index: 3;
+            }
+            50% {
+                transform: rotate(180deg);
+                z-index: 2;
+            }
+            75% {
+                transform: rotate(180deg);
+                z-index: 2;
+            }
+            100% {
+                transform: rotate(360deg);
+                z-index: 3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="background"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="round"></div>
+    </div>
+</body>
+</html>
